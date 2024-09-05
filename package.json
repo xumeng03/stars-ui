@@ -1,0 +1,13 @@
+{
+  "name": "@xumeng03/monorepo",
+  "private": "true",
+  "description": "A Component Library for Vue 3",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "ISC",
+  "engines": {
+    "node": ">=18"
+  }
+}

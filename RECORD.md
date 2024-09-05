@@ -90,7 +90,6 @@ pnpm init
   "author": "",
   "license": "ISC"
 }
-
 ```
 
 #### 5.2、packages
@@ -143,6 +142,7 @@ pnpm create vite play -template vue-ts
 ```
 
 `play`的`package.json`如下
+
 ```json
 {
   "name": "play",
@@ -164,5 +164,117 @@ pnpm create vite play -template vue-ts
     "vue-tsc": "^2.0.29"
   }
 }
+```
 
+### 6、依赖安装
+
+#### 6.1、根目录依赖
+
+```shell
+pnpm add -Dw vite
+pnpm add -Dw typescript
+```
+
+```shell
+pnpm add -w vue
+pnpm add -w lodash-es
+```
+
+把`@xumeng03/stars-ui`引入作为全局依赖
+
+```json
+{
+  "name": "@xumeng03/monorepo",
+  "private": "true",
+  "description": "A Component Library for Vue 3",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "ISC",
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.3",
+    "vite": "^5.4.1"
+  },
+  "dependencies": {
+    "lodash-es": "^4.17.21",
+    "vue": "^3.4.37",
+    "@xumeng03/stars-ui": "workspace:*"
+  },
+  "workspaces": [
+    "packages/*",
+    "play",
+    "docs"
+  ]
+}
+```
+
+#### 6.2、docs依赖
+
+> 按需求添加，我这里目前没有依赖需要安装
+
+#### 6.3、package子包依赖安装
+
+> 按需求添加，我这里只是在@xumeng03/stars-ui里面引入@stars-ui/components、@stars-ui/hooks、@stars-ui/themes、@stars-ui/utils
+
+```json
+{
+  "name": "@xumeng03/stars-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@stars-ui/components": "workspace:*",
+    "@stars-ui/hooks": "workspace:*",
+    "@stars-ui/themes": "workspace:*",
+    "@stars-ui/utils": "workspace:*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+```
+
+#### 6.4、play依赖
+
+```json
+{
+  "name": "play",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.4.37"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.1.2",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.1",
+    "vue-tsc": "^2.0.29"
+  }
+}
+```
+
+#### 6.5、安装依赖
+
+```shell
+pnpm install
+```
+
+#### 6.6、测试Monorepo
+
+```shell
+cd play
+pnpm run dev
 ```

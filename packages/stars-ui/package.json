@@ -5,6 +5,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "dependencies": {
+    "@stars-ui/components": "workspace:*",
+    "@stars-ui/hooks": "workspace:*",
+    "@stars-ui/themes": "workspace:*",
+    "@stars-ui/utils": "workspace:*"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC"

@@ -9,5 +9,19 @@
   "license": "ISC",
   "engines": {
     "node": ">=18"
-  }
+  },
+  "devDependencies": {
+    "typescript": "^5.5.3",
+    "vite": "^5.4.1"
+  },
+  "dependencies": {
+    "lodash-es": "^4.17.21",
+    "vue": "^3.4.37",
+    "@xumeng03/stars-ui": "workspace:*"
+  },
+  "workspaces": [
+    "packages/*",
+    "play",
+    "docs"
+  ]
 }
